@@ -1,4 +1,3 @@
-
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests as r
@@ -15,13 +14,11 @@ def analyze_sentiment(text):
   return sentiment_score
 
 urls = [
-  'https://www.zigwheels.com/user-reviews/Ola-Electric/Ola-S1',
-  'https://www.mouthshut.com/product-reviews/Ola-Electric-S1-Pro-reviews-926106335',
-  'https://www.autocarindia.com/bike-long-termer/ola-s1-pro-long-term-review-second-report-425403',
-  'https://www.carandbike.com/reviews/ola-s1-pro-electric-scooter-review-3087392',
-  'https://www.livemint.com/auto-news/ola-electric-scooter-s1-pro-first-ride-review-what-users-say-11636962521009.html',
-  'https://www.reddit.com/r/bangalore/comments/x22iuy/review_about_ola_s1_s1_pro/'
-  ]
+  'https://www.bikedekho.com/hero-electric/optima/reviews/need-improvement~1xFNW' , 
+    'https://www.zigwheels.com/user-reviews/Hero-Electric/Optima-Plus' , 
+    'https://autos.maxabout.com/bikes/hero-electric/user-reviews' , 
+    'https://www.mouthshut.com/bikes/Hero-Electric-Flash-reviews-925923481' , 
+]
 
 positive = []
 negative = []
@@ -73,15 +70,14 @@ counts = [positive_count, negative_count, neutral_count]
 plt.bar(labels, counts, color=['green', 'red', 'blue'])
 plt.xlabel('Sentiment')
 plt.ylabel('Number of Comments')
-plt.title('Sentiment Analysis of ola ev Comments')
+plt.title('Sentiment Analysis of hero ev Comments')
 plt.show()
-
 
 x = pd.DataFrame({
   'Comments': all_comments,
   'Sentiment Score': all_sentiment_scores
 })
-x.to_csv('ola comments.csv', index=False)
+x.to_csv('hero comments.csv', index=False)
 
 print("\nPositive Sentiment Scores : \n", positive)
 print("\nNegative Sentiment Scores : \n", negative)
