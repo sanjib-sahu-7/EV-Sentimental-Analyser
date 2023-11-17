@@ -1,1 +1,89 @@
 
+import pandas as pd
+from bs4 import BeautifulSoup
+import requests as r
+from textblob import TextBlob
+from matplotlib import pyplot as plt
+
+def remove_tags(html):
+  soup = BeautifulSoup(html, 'html.parser')
+  return soup.get_text()
+
+def analyze_sentiment(text):
+  blob = TextBlob(text)
+  sentiment_score = blob.sentiment.polarity
+  return sentiment_score
+
+urls = [
+  'https://www.zigwheels.com/user-reviews/Ola-Electric/Ola-S1',
+  'https://www.mouthshut.com/product-reviews/Ola-Electric-S1-Pro-reviews-926106335',
+  'https://www.autocarindia.com/bike-long-termer/ola-s1-pro-long-term-review-second-report-425403',
+  'https://www.carandbike.com/reviews/ola-s1-pro-electric-scooter-review-3087392',
+  'https://www.livemint.com/auto-news/ola-electric-scooter-s1-pro-first-ride-review-what-users-say-11636962521009.html',
+  'https://www.reddit.com/r/bangalore/comments/x22iuy/review_about_ola_s1_s1_pro/'
+  ]
+
+positive = []
+negative = []
+neutral = []
+all_comments = []
+all_sentiment_scores = []
+
+for url in urls:
+  response = r.get(url)
+  soup = BeautifulSoup(response.content, 'html.parser')
+
+  comm = soup.find_all('p')
+  comment_texts = [remove_tags(str(comment)) for comment in comm]
+  sentiment_scores = [analyze_sentiment(comment) for comment in comment_texts]
+
+  all_comments.extend(comment_texts)
+  all_sentiment_scores.extend(sentiment_scores)
+
+  for score in sentiment_scores:
+    if score > 0:
+      positive.append(score)
+    elif score < 0:
+      negative.append(score)
+    else:
+      neutral.append(score)
+
+# Create a range of values based on the number of sentiments
+x = range(len(positive + negative + neutral))
+
+# Plotting
+plt.plot(x[:len(positive)], positive, label='Positive')
+plt.plot(x[len(positive):len(positive) + len(negative)],
+         negative,
+         label='Negative')
+plt.plot(x[len(positive) + len(negative):], neutral, label='Neutral')
+plt.xlabel('Sentiment')
+plt.ylabel('Sentiment Score')
+plt.legend()
+plt.show()
+
+positive_count = len(positive)
+negative_count = len(negative)
+neutral_count = len(neutral)
+
+# Plotting the counts
+labels = ['Positive', 'Negative', 'Neutral']
+counts = [positive_count, negative_count, neutral_count]
+
+plt.bar(labels, counts, color=['green', 'red', 'blue'])
+plt.xlabel('Sentiment')
+plt.ylabel('Number of Comments')
+plt.title('Sentiment Analysis of ola ev Comments')
+plt.show()
+
+
+x = pd.DataFrame({
+  'Comments': all_comments,
+  'Sentiment Score': all_sentiment_scores
+})
+x.to_csv('ola comments.csv', index=False)
+
+print("\nPositive Sentiment Scores : \n", positive)
+print("\nNegative Sentiment Scores : \n", negative)
+print("\nNeutral Sentiment Scores : \n", neutral)
+print("\n all comments are :-\n", all_comments)
