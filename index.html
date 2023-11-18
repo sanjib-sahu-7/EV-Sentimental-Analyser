@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Add your styles for the scroll table here */
+        .chart-container {
+            text-align: center;
+        }
+        .scroll-table {
+            overflow-y: scroll;
+            height: 300px; /* Set your desired height */
+            border: 1px solid #ccc;
+        }
+    </style>
+    <title>Graph Example</title>
+</head>
+<body>
+       <u> <h1 align='center'>EV sentiment analyzer </h1></u>
+       <p>Below 3 companies are dominating the market with ease because of their versatility and reliability.
+        But with those versatilities, they have some flaws in them such as battery consumption, low speed, short distance coverage etc.
+        So we are going to rank them as the no of positive comments received for each</p>
+    <div class="chart-container">
+        <img src="D:\\data science project\\ola.png" height="500px" width="500px">
+        <p>total comments scored:- 267</p>
+        <img src="D:\\data science project\\okinawa.png" height="500px" width="500px">
+        <p>total comments scored :- 109</p>
+        <img src="D:\\data science project\\hero electric.png" height="500px" width="500px">
+        <p>total no of comments :-131</p>
+        <p class="recommendation">Therefore, by seeing the graph, Hero Electric has the most positive comments. We recommend you to buy that EV. If you want to buy another EV, then the store locations are:</p>
+    </div>
+
+    <div class="scroll-table">
+        <table id="locationTable" class="display">
+            <!-- Table headers -->
+            <thead>
+                <tr>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <!-- Table data -->
+            <tbody>
+                <!-- Hero Electric locations -->
+                <tr>
+                    <td>SCR 33, near Boyanika Exclusive, Unit 3, Kharvela Nagar, Bhubaneswar, Odisha 751001</td>
+                </tr>
+                <tr>
+                    <td>1058, near Reliance SMART, Beherasahi, Nilakantha Nagar, Nayapalli, Bhubaneswar, Odisha 751012</td>
+                </tr>
+                <tr>
+                    <td>Plot no -1015/433, near sidharth engineering, opposite the Presidency Hotel, Gada Sahi, Nilakantha Nagar, Nayapalli, Bhubaneswar, Odisha 751015</td>
+                </tr>
+                <tr>
+                    <td>Q573+9J2, NH16, Jaraka, Dharmasala, Odisha 755050</td>
+                </tr>
+                <tr>
+                    <td>XXWP+X68, Naranpur - Duburi Rd, Duburi Chhak, Duburi, Odisha 755026</td>
+                </tr>
+                <tr>
+                    <td>Sisua, Salipur, Odisha 754202</td>
+                </tr>
+                <tr>
+                    <td>PATIA, Koel Campus Infront Off Allahabad Bank, near by Raymond Show Room, Kanan Vihar, Chandrasekharpur, Bhubaneswar, Odisha 751024</td>
+                </tr>
+                <tr>
+                    <td>Near Idco tower, Mancheswar, Sector A, Mancheswar Industrial Estate, Bhubaneswar, Odisha 751010</td>
+                </tr>
+                <tr>
+                    <td>Niladri Vihar Rd, HIG Colony, Neeladri Vihar, Chandrasekharpur, Bhubaneswar, Odisha 751021</td>
+                </tr>
+                <tr>
+                    <td>Mahanee Complex, 308, Chandrasekharpur, Bhubaneswar, Odisha 751016</td>
+                </tr>
+                <tr>
+                    <td>1B, 10, CDA Sector 11, Cuttack, Odisha 753014</td>
+                </tr>
+                <tr>
+                    <td>Plot No 1764 Khata No 914, Professor Para Road, Cuttack, Odisha 753012</td>
+                </tr>
+                <tr>
+                    <td>Revenue Plot No 614/2371, Sikharpur, Cuttack, Odisha 753003</td>
+                </tr>
+                <tr>
+                    <td>Madhuban Market Complex, Kunjakanta, Dhenkanal, Odisha 759001</td>
+                </tr>
+                <tr>
+                    <td>JAYARSASAN, PHULNAKHARA, Bhubaneswar, Odisha 752101</td>
+                </tr>
+                <tr>
+                    <td>Plot No 1764 Khata No 914, Professor Para Road, Cuttack, Odisha 753012</td>
+                </tr>
+                <tr>
+                    <td>Revenue Plot No 614/2371, Sikharpur, Cuttack, Odisha 753003</td>
+                </tr>
+                <tr>
+                    <td>Plot No.- 05, near Amber Shopping Mall, Sisupalgarh, Bhubaneswar, Odisha 751002</td>
+                </tr>
+                <tr>
+                    <td>Madhuban Market Complex, Kunjakanta, Dhenkanal, Odisha 759001</td>
+                </tr>
+                <!-- Ola Experience Centres in Bhubaneswar -->
+                <tr>
+                    <p class ='recommendations' >if you want to buy another besides hero , u can refer to these places...</p>
+                    <td>Ola Experience Centre, Damana Chhak Damana Square, Nandankanan Road, Damana, Chandrasekharpur</td>
+                </tr>
+                <tr>
+                    <td>Ola Experience Centre, Lewis Road Plot #14/3018, Lewis Road, Kedar Gouri Vihar, Bhubaneswar, Odisha 751014</td>
+                </tr>
+                <tr>
+                    <td>Ola Experience Centre, Khandagiri #18/1182, Service Road, Khandagiri, Bhubaneswar, Odisha 751030</td>
+                </tr>
+                <!-- Ola Experience Centre in Cuttack -->
+                <tr>
+                    <td>Hash Motorz Llp, Plot No 1844, Ground Floor, Balianta Phulnakhara, Cuttack - 754001, Near Bank of Baroda, +917008998066, Closed for the day</td>
+                </tr>
+                <tr>
+                    <td>Shree Radhe Distributors, Plot No 279/748, Trisulia Banki Road Padmalavanagar, Cuttack - 754005, +918763349477, Closed for the day</td>
+                </tr>
+                <!-- Jagatsinghpur -->
+                <tr>
+                    <td>N K Motors, Ground Floor, Sipi Makundapur, Jagatsinghapur - 754103, +919937081191, Open until 07:00 PM</td>
+                </tr>
+                <!-- Jharsuguda -->
+                <tr>
+                    <td>Sri Balaji Motors, Plot No 4434/6067, Khata No 1067/1138 Ekatali, Jharsuguda - 768202, +917978515592, Open until 06:30 PM</td>
+                </tr>
+                <!-- Jajpur -->
+                <tr>
+                    <td>Agasti Electric World, Ground Floor, Bhimkarpur, Jajpur - 755001, Infront of JJ tiles & Marbles, +919583245919, Closed for the day</td>
+                </tr>
+                <!-- Kendrapada -->
+                <tr>
+                    <td>Srishti Motors, No 496, Plot No 141 & 142, Bhagabanpur Sana Mangala, Kendrapara - 754211, +919438438886, Open until 07:00 PM</td>
+                </tr>
+                <!-- Dhenkanal -->
+                <tr>
+                    <td>S A Motors, Plot No 858, Khata No 3470/1297 Nizigarh, Dhenkanal - 759001, +919439425744, Open until 08:00 PM</td>
+                </tr>
+                <!-- Kendujhar -->
+                <tr>
+                    <td>Bs Automobiles, Plot No 102 & 582, Ground Floor, DD College Road Keonjhar Kendujhar - 758001, Near LV Prasad Eye Institute, +917853839671, Open until 08:00 PM</td>
+                </tr>
+                <!-- Koraput -->
+                <tr>
+                    <td>Sasmita Motors, Ground Floor, Semiliguda, Koraput - 764036, +917008091232, Open until 07:00 PM</td>
+                </tr>
+                <!-- Nayagarh -->
+                <tr>
+                    <td>Shisir Automobiles, Plot No 881/1017, Main Road, NH 57 Ghadual, Nayagarh - 752069, Opposite Mahindra Showroom, +919853199215, Open until 07:30 PM</td>
+                </tr>
+                <!-- Khorda -->
+                <tr>
+                    <td>Mahamayee Okinawa E-Bikes, Plot No 48/1849, Main Road Balugaon Khorda - 752030, Infront of LIC Office, +919090188246, Open until 07:00 PM</td>
+                </tr>
+                <!-- Mayurbhanj -->
+                <tr>
+                    <td>Shree Enterprises, Plot No 268/1794, Ward No 17, Bijay Ramchandrapur Baripada Mayurbhanj - 757002, +917337494068, Open until 07:00 PM</td>
+                </tr>
+                <!-- Nuapada -->
+                <tr>
+                    <td>Labh Motors, Ground Floor, Main Road, Khariar Road Gotma Nuapada - 766104, +919178774900, Open until 07:00 PM</td>
+                </tr>
+                <!-- Puri -->
+                <tr>
+                    <td>Mahaveer Automobiles, Ground Floor, Jayapur Killa Pipili Puri - 752104, Near Pipili NAC, +919437885004, Open until 06:00 PM</td>
+                </tr>
+                <!-- Sonapur -->
+                <tr>
+                    <td>Satyanarayana Electric Bike, Plot No 170/380, Khata No 128/96, College Road, Ranapali Birmaharajpur Sonapur - 767018, Near BDCC Bank, +919938907573, Open until 07:30 PM</td>
+                </tr>
+                <!-- Sambalpur -->
+                <tr>
+                    <td>E-Motors, Ground Floor Bairipali Remed Road Sambalpur - 768006, Infront of Toyota showroom, +918895915620, Open until 07:00 PM</td>
+                </tr>
+                <!-- Sundargarh -->
+                <tr>
+                    <td>Naik Motors, Ground Floor Block Colony Sundargarh - 770001, Near District Judge Court, +917735767158, Open until 06:00 PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* Reset some default styles */
+body, h1, p, table, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    color: #333;
+}
+
+.chart-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.chart-container img {
+    margin: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.chart-container p {
+    margin: 5px;
+}
+
+.scroll-table {
+    overflow-y: scroll;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 10px;
+}
+
+/* Style the table */
+#locationTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#locationTable th, #locationTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#locationTable th {
+    background-color: #f2f2f2;
+}
+
+/* Style recommendations */
+.recommendation, .recommendations {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
